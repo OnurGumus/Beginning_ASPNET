@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Holy Grail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style>
+
+body {
+  display: grid;
+
+  grid-template-areas:
+    "header header header"
+    "nav nav nav"
+    "content content side"
+    "footer footer footer";
+
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: 100px auto 1fr 100px;
+  grid-gap: 10px;
+  font-size: 2rem;
+  color:black;  
+  min-height: 100vh;
+  margin:0;
+}
+header,nav, main ,aside, footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  grid-area: header;
+  background-color: red;
+}
+
+nav {
+  grid-area: nav;
+  background-color: green;
+  flex-direction: row;
+  justify-content: space-around;
+  
+  
+}
+nav a {
+  font-size:initial;
+  color:white;
+}
+
+nav :nth-child(1) { order: 2; }
+nav :nth-child(2) { order: 3; }
+nav :nth-child(3) { order: 1; }
+nav :nth-child(4) { order: 3; }
+
+
+main {
+  grid-area: content;
+  background-color: blue;
+}
+
+aside {
+  grid-area: side;
+  background-color: pink;
+}
+
+footer {
+  grid-area: footer;
+  background-color: yellow;
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "side"
+      "footer";
+
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto /* Header */
+      minmax(75px, auto) /* Nav */
+      1fr /* Content */
+      minmax(75px, auto) /* Sidebar */
+      auto; /* Footer */
+  }
+
+  nav, aside {
+    margin: 0;
+  }
+}
+
+  </style>
+<body>
+    <header>
+      Header content
+    </header>
+  
+    <nav>
+        <a href="/html/">HTML</a> 
+        <a href="/css/">CSS</a> 
+        <a href="/js/">JavaScript</a> 
+        <a href="/jquery/">jQuery</a>
+    </nav>
+  
+    <main>
+      Main content
+    </main>
+  
+    <aside>
+      Sidebar / Ads
+    </aside>
+  
+    <footer>
+      Footer content
+    </footer>
+</body>
+</html> 

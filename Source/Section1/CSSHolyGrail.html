@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Holy Grail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style>
+
+body {
+  display: grid;
+
+  grid-template-areas:
+    "header header header"
+    "nav content side"
+    "footer footer footer";
+
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: 100px 1fr 100px;
+  grid-gap: 10px;
+  text-align: center;
+  font-size: 2rem;
+  color:black;  
+  min-height: 100vh;
+  margin:0;
+}
+header,nav, main ,aside, footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  grid-area: header;
+  background-color: red;
+}
+
+nav {
+  grid-area: nav;
+  background-color: green;
+}
+
+main {
+  grid-area: content;
+  background-color: blue;
+}
+
+aside {
+  grid-area: side;
+  background-color: pink;
+}
+
+footer {
+  grid-area: footer;
+  background-color: yellow;
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "side"
+      "footer";
+
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto /* Header */
+      minmax(75px, auto) /* Nav */
+      1fr /* Content */
+      minmax(75px, auto) /* Sidebar */
+      auto; /* Footer */
+  }
+
+  nav, aside {
+    margin: 0;
+  }
+}
+
+  </style>
+<body>
+    <header>
+      Header content
+    </header>
+  
+    <nav>
+      Navigation
+    </nav>
+  
+    <main>
+      Main content
+    </main>
+  
+    <aside>
+      Sidebar / Ads
+    </aside>
+  
+    <footer>
+      Footer content
+    </footer>
+</body>
+</html> 

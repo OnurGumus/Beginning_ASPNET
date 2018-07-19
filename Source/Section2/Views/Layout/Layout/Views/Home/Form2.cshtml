@@ -1,0 +1,16 @@
+﻿@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>@Html.Label("Name")</td>
+            <td>@Html.TextBox("txtName")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Age")</td>
+            <td>@Html.TextBox("txtAge")</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
