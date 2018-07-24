@@ -4,19 +4,61 @@
     <b>@ViewBag.Message</b>
 }
 
+@using (Html.BeginForm("ValidateAge", "Home", FormMethod.Post
+     /* ,new { id = "myForm", onsubmit="post(); return false;" }*/))
+    {
+        <table>
+            <tr>
+                <td>@Html.LabelFor(Model => Model.Name) </td>
+                <td>@Html.TextBoxFor(Model => Model.Name) </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(Model => Model.Age)</td>
+                <td>@Html.TextBox(nameof(Model.Age),"")</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    }
+<script>
+    const post = async () => {
+        var form = new FormData(document.getElementById('myForm'));
+        var res = await fetch("/person/1", {
+            method: "PUT",
+            body: form
+        });
+       // const json = await res.json();
+        console.log(res.status);
+    }
+</script>
+
+@*<style>
+    form
+    {
+        display: grid;
+        grid-template-columns: [label] min-content [input] min-content;
+        grid-gap: 10px;
+    }
+
+    label
+    {
+        grid-column: label;
+        align-self: center;
+    }
+
+    input,
+    button
+    {
+        grid-column: input;
+        align-self: center;
+    }
+</style>
 @using (Html.BeginForm("ValidateAge", "Home", FormMethod.Post))
 {
-    <table>
-        <tr>
-            <td>@Html.LabelFor(Model => Model.Name) </td>
-            <td>@Html.TextBoxFor(Model => Model.Name) </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(Model => Model.Age)</td>
-            <td>@Html.TextBoxFor(Model => Model.Age, htmlAttributes : new { vvvalue = "4" })</td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" value="Submit" /></td>
-        </tr>
-    </table>
-}
+    @Html.LabelFor(Model => Model.Name)
+    @Html.TextBoxFor(Model => Model.Name)
+    @Html.LabelFor(Model => Model.Age)
+    @Html.TextBoxFor(Model => Model.Age)
+    <input type="submit" value="Submit" />
+}*@

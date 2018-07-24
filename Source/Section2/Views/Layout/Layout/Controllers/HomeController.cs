@@ -24,8 +24,29 @@ namespace Layout.Controllers
             var person1 = new Person();
             return View(person1);
         }
+        [Route("/person/{id}")]
+        [HttpPut]
+        public IActionResult PutPerson(int id, Person person1)
+        {
+            ViewBag.Title = "Validate Age for voting";
+            if (person1.Age >= 18)
+            {
+                ViewBag.Message = "You are eligible to Vote!";
+            }
+            else
+            {
+                ViewBag.Message = "Sorry.You are not old enough to vote!";
+            }
+            return StatusCode(204);
+        }
 
 
+        [Route("/person/{id}")]
+        [HttpDelete]
+        public IActionResult DeletePerson(int id)
+        {
+            return StatusCode(204);
+        }
 
         [HttpPost]
         public IActionResult ValidateAge(Person person1)
